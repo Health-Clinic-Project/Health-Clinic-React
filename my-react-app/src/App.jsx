@@ -6,6 +6,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PersonalArea from "./pages/PersonalArea";
 import PatientsList from "./pages/PatientsList";
+import DoctorLogin from "./pages/DoctorLogin";
+import DoctorMenu from "./pages/DoctorMenu";
+import CreatAppointments from "./pages/CreatAppointments";
+
 
 import "./AppStyles.css";
 
@@ -21,6 +25,7 @@ export default function App() {
           <Link to="/register"><i className="fas fa-user-plus"></i> Register</Link>
           <Link to="/personal"><i className="fas fa-clinic-medical"></i> Personal Area</Link>
           <Link to="/patients"><i className="fas fa-users"></i> Patients</Link>
+          <Link to="/DoctorLogin"><i className="fas fa-stethoscope"></i> Doctor Login</Link>
         </nav>
 
         <main className="page-content">
@@ -30,6 +35,9 @@ export default function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/personal" element={<PersonalArea />} />
             <Route path="/patients" element={<PatientsList />} />
+            <Route path="/doctorLogin" element={<DoctorLogin />} />
+            <Route path="/doctorMenu" element={<DoctorMenu />} />
+            <Route path="/creatAppointments" element={<CreatAppointments />} />
           </Routes>
         </main>
       </div>

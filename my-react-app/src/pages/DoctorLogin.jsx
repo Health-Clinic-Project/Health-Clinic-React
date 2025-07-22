@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function DoctorLogin() {
   const [formData, setFormData] = useState({ id: "", firstName: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ export default function Login() {
     setError(null);
 
     try {
-      const response = await fetch(`https://localhost:7270/api/Patient/${formData.id}`);
+      const response = await fetch(`https://localhost:7270/api/Doctor/${formData.id}`);
       if (response.status === 404) {
         // משתמש לא נמצא - נעבור להרשמה
         navigate("/register");
@@ -32,7 +32,7 @@ export default function Login() {
       const patient = await response.json();
 
       if (patient.firstName.toLowerCase() === formData.firstName.trim().toLowerCase()) {
-        alert("התחברת בהצלחה!");
+        navigate("/doctorMenu");
         // אפשר להמשיך ולשמור את הפרטים ב-localStorage או להוביל לדף האישי
         // לדוגמה:
         // localStorage.setItem("patient", JSON.stringify(patient));
@@ -57,11 +57,11 @@ export default function Login() {
       boxShadow: "0 0 10px rgba(0,0,0,0.1)",
       fontFamily: "Arial, sans-serif"
     }}>
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Login</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Doctor Login</h2>
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="id" style={{ display: "block", marginBottom: "5px" }}>
-          תעודת זהות:
+          מספר רשיון רופא:
         </label>
         <input
           id="id"
@@ -81,7 +81,7 @@ export default function Login() {
         />
 
         <label htmlFor="firstName" style={{ display: "block", marginBottom: "5px" }}>
-          שם פרטי:
+          שם רופא:
         </label>
         <input
           id="firstName"
